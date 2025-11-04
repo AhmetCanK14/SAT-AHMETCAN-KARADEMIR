@@ -3,6 +3,14 @@ body {
   font-family: Arial, sans-serif;
   background-color: #fff8f0;
   color: #333;
+  background-image: url('arkaplanfoto.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
 }
 
 nav {
@@ -23,13 +31,41 @@ nav a:hover {
 }
 
 section {
+  color: rgb(0, 0, 0);
   padding: 50px;
   text-align: center;
 }
 
 footer {
-  background-color: #eee;
+  background-color: #8B0000;
   text-align: center;
   padding: 20px;
   margin-top: 40px;
+}
+.social-icons {
+  display: flex;
+  justify-content: center; /* yatay ortalama */
+  align-items: center;     /* dikey ortalama */
+  margin-top: 20px;
+}
+
+.social-icons a {
+  color: #E1306C;
+  font-size: 60px;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #C13584;
+}
+img {
+  width: 125px;
+  transition: transform 0.3s ease; /* animasyon geçişi */
+  border-radius: 10px; /* isteğe bağlı, köşe yumuşatma */
+}
+
+img:hover {
+  transform: scale(1.2); /* %20 yakınlaştır */
 }
