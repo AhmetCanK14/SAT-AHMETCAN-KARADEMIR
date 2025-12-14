@@ -1,32 +1,71 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>iletisim</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>İletişim | Restoran</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <nav>
-    <a href="anasayfa.html">Anasayfa</a>
-    <a href="hakkimizda.html">Hakkımızda</a>
-    <a href="rezervasyon.html">Rezervasyon</a>
-    <a href="iletisim.html">İletişim</a>
+  <nav>
+    <div class="container navbar">
+      <div class="brand">
+        <div class="brand-badge">🍽️</div>
+        <span>Restoran</span>
+      </div>
+      <div class="nav-links">
+        <a href="menu.html">Menüler</a>
+        <a href="rezervasyon.html">Rezervasyon</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a class="active" href="iletisim.html">İletişim</a>
+      </div>
+    </div>
   </nav>
 
-  <section>
-    <h1>İletişim</h1>
-    <p>İletişim bilgilerinin devamı gelecektir.</p>
-  </section>
+  <main class="section">
+    <div class="container">
+      <div class="two-col">
+        <div class="form-card">
+          <h2 style="margin:0 0 10px;">Bize Ulaş</h2>
+          <p class="help">
+            Telefon: <b>0 (5xx) xxx xx xx</b><br/>
+            E-posta: <b>info@restoran.com</b><br/>
+            Adres: <b>Merkez / İstanbul</b>
+          </p>
 
-<div class="social-icons">
-      <a href="https://www.instagram.com/?hl=en" target="_blank">
-       <img src="https://1000logos.net/wp-content/uploads/2017/02/Instagram-Logosu.png" alt="instagram">
-      </a>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/?hl=tr" target="_blank" aria-label="Instagram">
+              <img src="https://1000logos.net/wp-content/uploads/2017/02/Instagram-Logosu.png" alt="instagram">
+            </a>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3 style="margin:0 0 10px;">Mesaj Gönder</h3>
+          <form>
+            <label>Ad Soyad</label>
+            <input type="text" required placeholder="Adın soyadın" />
+
+            <label>E-posta</label>
+            <input type="email" required placeholder="mail@ornek.com" />
+
+            <label>Mesaj</label>
+            <textarea required placeholder="Ne diyorsun?"></textarea>
+
+            <button class="btn primary" type="submit" style="width:100%; margin-top:12px;">
+              Gönder
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-  </section>
+  </main>
 
   <footer>
-    <p>&copy; 2025 Restoran</p>
+    <div class="container">
+      <p>&copy; 2025 Restoran</p>
+    </div>
   </footer>
 </body>
 </html>
+
