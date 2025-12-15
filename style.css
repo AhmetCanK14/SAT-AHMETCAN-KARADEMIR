@@ -1,7 +1,6 @@
 :root{
   --primary:#8B0000;
   --primary2:#b00000;
-  --bg:#0f0f12;
   --card:rgba(255,255,255,.10);
   --card2:rgba(255,255,255,.14);
   --text:#ffffff;
@@ -11,6 +10,10 @@
 }
 
 *{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top: 90px; /* sticky nav yüzünden başlıklar kaybolmasın */
+}
 body{
   margin:0;
   font-family: Arial, sans-serif;
@@ -25,6 +28,7 @@ body{
 a{color:inherit; text-decoration:none}
 .container{width:min(1100px, 92%); margin:0 auto}
 
+/* NAV */
 nav{
   position: sticky;
   top: 0;
@@ -33,7 +37,6 @@ nav{
   background: rgba(139,0,0,.92);
   border-bottom: 1px solid rgba(255,255,255,.12);
 }
-
 .navbar{
   display:flex;
   align-items:center;
@@ -66,17 +69,14 @@ nav{
   font-weight:700;
   transition:.2s;
 }
-.nav-links a:hover{
-  background: rgba(255,255,255,.16);
-}
+.nav-links a:hover{ background: rgba(255,255,255,.16); }
 .nav-links a.active{
   background: rgba(255,255,255,.22);
   outline: 1px solid rgba(255,255,255,.14);
 }
 
-.hero{
-  padding: 56px 0 22px;
-}
+/* HERO */
+.hero{ padding: 56px 0 22px; }
 .hero-grid{
   display:grid;
   grid-template-columns: 1.4fr .9fr;
@@ -104,6 +104,8 @@ nav{
   gap:10px;
   flex-wrap:wrap;
 }
+
+/* BUTTON */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -123,10 +125,15 @@ nav{
   border-color: rgba(255,255,255,.18);
 }
 
+/* BADGES */
 .badges{
-  display:flex; gap:10px; flex-wrap:wrap; margin-top:10px
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
 }
 .badge{
+  display:inline-flex;
   padding:8px 10px;
   border-radius: 999px;
   background: rgba(255,255,255,.12);
@@ -134,25 +141,32 @@ nav{
   color: rgba(255,255,255,.86);
   font-weight:700;
   font-size: 13px;
+  transition: .2s;
+}
+.badge:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.16);
 }
 
-.section{
-  padding: 18px 0 52px;
-}
+/* SECTION */
+.section{ padding: 18px 0 52px; }
 .section-title{
-  display:flex; align-items:end; justify-content:space-between;
-  gap:10px; flex-wrap:wrap;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
   margin: 10px 0 14px;
 }
 .section-title h2{margin:0; font-size: 22px}
 .section-title span{color: var(--muted); font-size: 14px}
 
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
 }
-
 .card{
   grid-column: span 3;
   background: var(--card);
@@ -175,10 +189,8 @@ nav{
 }
 .card .content{padding: 14px}
 .card h3{margin:0 0 8px; font-size: 16px}
-.card p{margin:0; color: var(--muted); font-size: 13px; line-height:1.55}
 .meta{
   display:flex; align-items:center; justify-content:space-between;
-  margin-top: 12px;
   gap:10px;
 }
 .price{
@@ -198,13 +210,13 @@ nav{
   border:1px solid rgba(255,255,255,.10);
 }
 
+/* FORM */
 .two-col{
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   align-items:start;
 }
-
 .form-card{
   background: var(--card);
   border:1px solid rgba(255,255,255,.14);
@@ -213,7 +225,7 @@ nav{
   padding: 18px;
 }
 label{display:block; margin: 10px 0 6px; font-weight:800}
-input, select, textarea{
+input, textarea{
   width:100%;
   padding: 12px 12px;
   border-radius: 14px;
@@ -231,6 +243,7 @@ textarea{min-height:110px; resize:vertical}
   line-height:1.55;
 }
 
+/* FOOTER */
 footer{
   margin-top: 40px;
   background: rgba(139,0,0,.92);
@@ -240,26 +253,12 @@ footer{
   color: rgba(255,255,255,.9);
 }
 
-.social-icons{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap: 12px;
-  margin-top: 12px;
-}
-.social-icons img{
-  width: 56px;
-  height:auto;
-  border-radius: 12px;
-  transition: transform .2s ease;
-}
-.social-icons img:hover{transform: scale(1.12)}
-
+/* RESPONSIVE */
 @media (max-width: 980px){
   .card{grid-column: span 4}
   .hero-grid{grid-template-columns: 1fr}
+  .two-col{grid-template-columns: 1fr}
 }
 @media (max-width: 640px){
   .card{grid-column: span 6}
-  .two-col{grid-template-columns: 1fr}
 }

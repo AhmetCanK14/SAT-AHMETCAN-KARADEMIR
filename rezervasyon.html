@@ -1,39 +1,93 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>rezervasyon</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rezervasyon | Restoran</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <nav>
-    <a href="anasayfa.html">Anasayfa</a>
-    <a href="hakkimizda.html">Hakkımızda</a>
-    <a href="rezervasyon.html">Rezervasyon</a>
-    <a href="iletisim.html">İletişim</a>
-  </nav>
 
-  <section>
-    <h1>Rezervasyon Yap</h1>
-    <form>
-      <label>İsim:</label><br>
-      <input type="text" name="isim" required><br><br>
+<nav>
+  <div class="container navbar">
+    <div class="brand">
+      <div class="brand-badge">🍽️</div>
+      <span>Restoran</span>
+    </div>
+    <div class="nav-links">
+      <a href="menu.html">Menüler</a>
+      <a class="active" href="rezervasyon.html">Rezervasyon</a>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a>
+    </div>
+  </div>
+</nav>
 
-      <label>Tarih:</label><br>
-      <input type="date" name="tarih" required><br><br>
+<main class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Rezervasyon</h2>
+      <span>Yer ayırt, kafan rahat etsin</span>
+    </div>
 
-      <label>Saat:</label><br>
-      <input type="time" name="saat" required><br><br>
+    <div class="two-col">
+      <div class="form-card">
+        <form>
+          <label>Ad Soyad</label>
+          <input type="text" name="isim" placeholder="Örn: Efe Talas" required />
 
-      <label>Kişi Sayısı:</label><br>
-      <input type="number" name="kisi" min="1" required><br><br>
+          <label>Telefon</label>
+          <input type="tel" name="telefon" placeholder="05xx xxx xx xx" required />
 
-      <button type="submit">Gönder</button>
-    </form>
-  </section>
+          <label>Tarih</label>
+          <input type="date" name="tarih" required />
 
-  <footer>
+          <label>Saat</label>
+          <input type="time" name="saat" required />
+
+          <label>Kişi Sayısı</label>
+          <input type="number" name="kisi" min="1" max="20" value="2" required />
+
+          <label>Not</label>
+          <textarea name="not" placeholder="Pencere kenarı, doğum günü, alerji vs..."></textarea>
+
+          <button class="btn primary" type="submit" style="width:100%; margin-top:12px;">
+            Rezervasyonu Gönder
+          </button>
+
+          <p class="help" style="margin-top:10px;">
+            Not: Şimdilik sadece tasarım. İstersen bunu PHP/SQL ile gerçek rezervasyona bağlarız.
+          </p>
+        </form>
+      </div>
+
+      <div class="form-card">
+        <h3 style="margin:0 0 10px;">Çalışma Saatleri</h3>
+        <p class="help">
+          Pazartesi - Pazar: <b>10:00 - 23:30</b><br/>
+          Yoğun saatler: <b>19:00 - 21:30</b>
+        </p>
+
+        <div class="badges" style="margin-top:12px;">
+          <div class="badge">📍 Merkez / İstanbul</div>
+          <div class="badge">☎️ 0 (5xx) xxx xx xx</div>
+          <div class="badge">🚗 Otopark Var</div>
+        </div>
+
+        <h3 style="margin:18px 0 10px;">İpucu</h3>
+        <p class="help">4+ kişi için erken saat seç, geç kalınca masa “buhar oluyor”.</p>
+
+        <a class="btn" href="menu.html" style="margin-top:12px; width:100%;">Menülere Dön</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
     <p>&copy; 2025 Restoran</p>
-  </footer>
+  </div>
+</footer>
+
 </body>
 </html>
