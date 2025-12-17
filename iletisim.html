@@ -37,17 +37,19 @@
 
       <div class="form-card">
         <h3 style="margin:0 0 10px;">Mesaj Gönder</h3>
-        <form>
+        <form id="contactForm">
           <label>Ad Soyad</label>
-          <input type="text" required placeholder="Adın soyadın" />
+          <input type="text" name="name" id="name" required placeholder="Adın soyadın" />
 
           <label>E-posta</label>
-          <input type="email" required placeholder="mail@ornek.com" />
+          <input type="email" name="email" id="email" required placeholder="mail@ornek.com" />
 
           <label>Mesaj</label>
-          <textarea required placeholder="Ne diyorsun?"></textarea>
+          <textarea name="message" id="message" required placeholder="Ne diyorsun?"></textarea>
 
-          <button class="btn primary" type="submit" style="width:100%; margin-top:12px;">
+          <div id="formMessage" style="margin-top:12px; padding:12px; border-radius:8px; display:none;"></div>
+
+          <button class="btn primary" type="submit" id="submitBtn" style="width:100%; margin-top:12px;">
             Gönder
           </button>
         </form>
@@ -61,6 +63,65 @@
     <p>&copy; 2025 Restoran</p>
   </div>
 </footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const submitBtn = document.getElementById('submitBtn');
+    const messageDiv = document.getElementById('formMessage');
+    const formData = new FormData(form);
+    
+    // Butonu devre dışı bırak
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Gönderiliyor...';
+    messageDiv.style.display = 'none';
+    
+    try {
+        const response = await fetch('api_iletisim.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        // Önce ham metni al ve JSON parse etmeye çalış
+        const text = await response.text();
+        let data = null;
+        try {
+            data = text ? JSON.parse(text) : null;
+        } catch (e) {
+            console.error('Sunucudan gelen yanıt JSON değil:', text);
+        }
+
+        // HTTP hatası varsa server mesajını göster
+        if (!response.ok) {
+            const serverMsg = data && (data.error || data.message) ? (data.error || data.message) : (text || `Sunucu hatası: ${response.status}`);
+            throw new Error(serverMsg);
+        }
+
+        if (data && data.success) {
+            messageDiv.style.display = 'block';
+            messageDiv.style.background = 'rgba(16,185,129,.2)';
+            messageDiv.style.border = '1px solid #10b981';
+            messageDiv.style.color = '#10b981';
+            messageDiv.textContent = data.message || 'Mesajınız başarıyla gönderildi!';
+            form.reset();
+        } else {
+            const errMsg = data && (data.error || data.message) ? (data.error || data.message) : 'Bir hata oluştu!';
+            throw new Error(errMsg);
+        }
+    } catch (error) {
+        messageDiv.style.display = 'block';
+        messageDiv.style.background = 'rgba(239,68,68,.2)';
+        messageDiv.style.border = '1px solid #ef4444';
+        messageDiv.style.color = '#ef4444';
+        messageDiv.textContent = error.message || 'Bağlantı hatası! Lütfen tekrar deneyin.';
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Gönder';
+    }
+});
+</script>
 
 </body>
 </html>
